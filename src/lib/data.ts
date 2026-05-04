@@ -71,6 +71,8 @@ export const DEFAULT_DATA = {
   contact: {
     whatsapp: "+8801756252356",
     email: "farhanhossien@gmail.com",
+    facebook: "https://www.facebook.com/farhan.hossien.6969",
+    instagram: "https://www.instagram.com/farhan_hossien_/",
     futureGoal: "Future goal: Building my own AI-powered product studio from Bangladesh 🇧🇩"
   }
 };

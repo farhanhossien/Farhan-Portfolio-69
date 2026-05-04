@@ -36,11 +36,11 @@ export default function HeroSection({ hero }: { hero: any }) {
           </FadeIn>
         </div>
 
-        {/* Hero Portrait - Adjusted for mobile visibility */}
-        <div className="absolute left-1/2 -translate-x-1/2 bottom-0 z-10 translate-y-[5%] sm:translate-y-[35%] md:translate-y-[40%] pointer-events-none sm:pointer-events-auto">
+        {/* Hero Portrait - Adjusted for mobile visibility to bridge the gap */}
+        <div className="absolute left-1/2 -translate-x-1/2 bottom-0 z-10 translate-y-[-110%] sm:translate-y-[35%] md:translate-y-[40%] pointer-events-none sm:pointer-events-auto">
           <FadeIn delay={0.6} y={30}>
             <Magnet padding={150} strength={3}>
-              <div className="w-[180px] sx:w-[220px] sm:w-[280px] md:w-[340px] lg:w-[420px]">
+              <div className="w-[180px] sm:w-[280px] md:w-[340px] lg:w-[420px]">
                 <img
                   src="https://shrug-person-78902957.figma.site/_components/v2/d24c01ad3a56fc65e942a1f501eb73db42d7cf9a/Rectangle_40443.81459862.png"
                   alt="Farhan Hossien Portrait"

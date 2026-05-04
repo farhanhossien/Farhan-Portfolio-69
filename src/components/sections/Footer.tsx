@@ -1,3 +1,4 @@
+import { Facebook, Instagram, MessageCircle, Mail } from 'lucide-react';
 import ContactButton from '../ui/ContactButton';
 
 export default function Footer({ contact }: { contact: any }) {
@@ -23,21 +24,41 @@ export default function Footer({ contact }: { contact: any }) {
         <div id="contact" className="flex flex-col items-start md:items-end gap-4">
           <ContactButton />
           
-          <div className="flex flex-col items-start md:items-end gap-2 mt-4">
+          <div className="flex flex-row flex-wrap items-center md:justify-end gap-3 mt-6">
             <a 
               href={`https://wa.me/${contact.whatsapp.replace('+', '').replace('-', '')}`} 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-[#D7E2EA] opacity-60 font-light uppercase tracking-widest text-xs hover:opacity-100 transition-opacity"
+              className="text-[#D7E2EA] opacity-80 font-light uppercase tracking-widest text-xs hover:opacity-100 hover:text-[#25D366] transition-all flex items-center gap-3 bg-white/5 px-4 py-2 rounded-full border border-white/10"
             >
-              WhatsApp: {contact.whatsapp}
+              <MessageCircle size={18} /> WhatsApp
             </a>
             <a 
               href={`mailto:${contact.email}`} 
-              className="text-[#D7E2EA] opacity-60 font-light uppercase tracking-widest text-xs hover:opacity-100 transition-opacity"
+              className="text-[#D7E2EA] opacity-80 font-light uppercase tracking-widest text-xs hover:opacity-100 hover:text-white transition-all flex items-center gap-3 bg-white/5 px-4 py-2 rounded-full border border-white/10"
             >
-              {contact.email}
+              <Mail size={18} /> Email
             </a>
+            {contact.facebook && (
+              <a 
+                href={contact.facebook}
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-[#D7E2EA] opacity-80 font-light uppercase tracking-widest text-xs hover:opacity-100 hover:text-[#1877F2] transition-all flex items-center gap-3 bg-white/5 px-4 py-2 rounded-full border border-white/10"
+              >
+                <Facebook size={18} fill="currentColor" strokeWidth={0} /> Facebook
+              </a>
+            )}
+            {contact.instagram && (
+              <a 
+                href={contact.instagram}
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-[#D7E2EA] opacity-80 font-light uppercase tracking-widest text-xs hover:opacity-100 hover:text-[#E4405F] transition-all flex items-center gap-3 bg-white/5 px-4 py-2 rounded-full border border-white/10"
+              >
+                <Instagram size={18} /> Instagram
+              </a>
+            )}
           </div>
         </div>
       </div>

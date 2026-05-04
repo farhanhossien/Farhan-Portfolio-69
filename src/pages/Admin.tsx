@@ -378,6 +378,8 @@ const ContactEditor = ({ data, onSave }: any) => {
       <div className="bg-[#1A1A1A] border border-[#D7E2EA]/10 p-8 rounded-2xl flex flex-col gap-8">
         <AdminInput label="WhatsApp Number" value={contact.whatsapp} onChange={(v: string) => setContact({...contact, whatsapp: v})} />
         <AdminInput label="Email Address" value={contact.email} onChange={(v: string) => setContact({...contact, email: v})} />
+        <AdminInput label="Facebook URL" value={contact.facebook || ""} onChange={(v: string) => setContact({...contact, facebook: v})} />
+        <AdminInput label="Instagram URL" value={contact.instagram || ""} onChange={(v: string) => setContact({...contact, instagram: v})} />
         <AdminInput label="Future Goal Text" textarea value={contact.futureGoal} onChange={(v: string) => setContact({...contact, futureGoal: v})} />
         <AdminButton onClick={() => onSave('portfolio_contact', contact)}>Save Changes</AdminButton>
       </div>
