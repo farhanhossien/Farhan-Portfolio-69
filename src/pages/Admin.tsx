@@ -181,6 +181,12 @@ const HeroEditor = ({ data, onSave, hasChanges }: any) => {
 const AboutEditor = ({ data, onSave }: any) => {
   const [about, setAbout] = useState(data.about);
 
+  useEffect(() => {
+    if (JSON.stringify(about) !== JSON.stringify(data.about)) {
+      onSave(null, true);
+    }
+  }, [about]);
+
   return (
     <div className="flex flex-col gap-8">
       <h2 className="hero-heading text-4xl font-black uppercase">About Section</h2>
@@ -199,6 +205,12 @@ const ServicesEditor = ({ data, onSave }: any) => {
   const [services, setServices] = useState(data.services);
   const [showAdd, setShowAdd] = useState(false);
   const [newService, setNewService] = useState({ name: "", description: "" });
+
+  useEffect(() => {
+    if (JSON.stringify(services) !== JSON.stringify(data.services)) {
+      onSave(null, true);
+    }
+  }, [services]);
 
   const move = (index: number, dir: number) => {
     const newArr = [...services];
@@ -274,6 +286,12 @@ const ProjectsEditor = ({ data, onSave }: any) => {
   const [projects, setProjects] = useState(data.projects);
   const [showAdd, setShowAdd] = useState(false);
 
+  useEffect(() => {
+    if (JSON.stringify(projects) !== JSON.stringify(data.projects)) {
+      onSave(null, true);
+    }
+  }, [projects]);
+
   return (
     <div className="flex flex-col gap-8">
       <div className="flex justify-between items-center">
@@ -348,6 +366,12 @@ const ProjectsEditor = ({ data, onSave }: any) => {
 const ContactEditor = ({ data, onSave }: any) => {
   const [contact, setContact] = useState(data.contact);
 
+  useEffect(() => {
+    if (JSON.stringify(contact) !== JSON.stringify(data.contact)) {
+      onSave(null, true);
+    }
+  }, [contact]);
+
   return (
     <div className="flex flex-col gap-8">
       <h2 className="hero-heading text-4xl font-black uppercase">Contact Info</h2>
@@ -394,6 +418,10 @@ export default function Admin() {
 
   const centralSave = (key: string, value: any) => {
     localStorage.setItem(key, JSON.stringify(value));
+    
+    // Dispatch custom event for real-time update in current tab
+    window.dispatchEvent(new Event('portfolio-update'));
+    
     setPortfolioData(getStorageData());
     setToast({ message: "Saved successfully!", type: 'success' });
     

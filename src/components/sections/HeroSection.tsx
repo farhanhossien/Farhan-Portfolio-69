@@ -1,11 +1,11 @@
 import Magnet from '../ui/Magnet';
 import ContactButton from '../ui/ContactButton';
 import FadeIn from '../ui/FadeIn';
-import { getStorageData } from '../../lib/data';
 
-export default function HeroSection() {
-  const { hero } = getStorageData();
-  const navLinks = hero.navLinks || ["About", "Services", "Projects", "Contact"];
+export default function HeroSection({ hero }: { hero: any }) {
+  const navLinks = hero?.navLinks || ["About", "Services", "Projects", "Contact"];
+
+  if (!hero) return null;
 
   return (
     <section className="relative h-screen flex flex-col overflow-x-clip bg-[#0C0C0C]">
@@ -27,20 +27,20 @@ export default function HeroSection() {
       </nav>
 
       {/* Hero Heading */}
-      <div className="flex-grow flex flex-col justify-start relative px-6 md:px-10 pt-16 md:pt-24">
-        <div className="overflow-hidden w-full z-0 relative">
+      <div className="flex-grow flex flex-col justify-start relative px-6 md:px-10 pt-10 sm:pt-16 md:pt-24">
+        <div className="w-full z-0 relative">
           <FadeIn delay={0.15} y={40}>
-            <h1 className="hero-heading text-[7vw] sm:text-[8vw] md:text-[9vw] lg:text-[10vw] font-black uppercase tracking-tight leading-none whitespace-nowrap w-full text-center">
+            <h1 className="hero-heading text-[12vw] sm:text-[8vw] md:text-[9vw] lg:text-[10vw] font-black uppercase tracking-tight leading-[0.9] sm:leading-none sm:whitespace-nowrap w-full text-center">
               HI, I'm {hero.name}
             </h1>
           </FadeIn>
         </div>
 
-        {/* Hero Portrait - Lowered and scaled down to prevent blocking name */}
-        <div className="absolute left-1/2 -translate-x-1/2 bottom-0 z-10 translate-y-[35%] sm:translate-y-[40%] pointer-events-none sm:pointer-events-auto">
+        {/* Hero Portrait - Adjusted for mobile visibility */}
+        <div className="absolute left-1/2 -translate-x-1/2 bottom-0 z-10 translate-y-[5%] sm:translate-y-[35%] md:translate-y-[40%] pointer-events-none sm:pointer-events-auto">
           <FadeIn delay={0.6} y={30}>
             <Magnet padding={150} strength={3}>
-              <div className="w-[200px] sm:w-[280px] md:w-[340px] lg:w-[420px]">
+              <div className="w-[180px] sx:w-[220px] sm:w-[280px] md:w-[340px] lg:w-[420px]">
                 <img
                   src="https://shrug-person-78902957.figma.site/_components/v2/d24c01ad3a56fc65e942a1f501eb73db42d7cf9a/Rectangle_40443.81459862.png"
                   alt="Farhan Hossien Portrait"

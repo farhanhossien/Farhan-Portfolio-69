@@ -1,10 +1,9 @@
 import FadeIn from '../ui/FadeIn';
 import AnimatedText from '../ui/AnimatedText';
 import ContactButton from '../ui/ContactButton';
-import { getStorageData } from '../../lib/data';
 
-export default function AboutSection() {
-  const { about } = getStorageData();
+export default function AboutSection({ about }: { about: any }) {
+  if (!about) return null;
 
   return (
     <section id="about" className="relative min-h-screen flex flex-col items-center justify-center bg-[#0C0C0C] px-5 sm:px-8 md:px-10 py-20 overflow-hidden">

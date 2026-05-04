@@ -3,8 +3,6 @@ import React, { useRef } from 'react';
 import FadeIn from '../ui/FadeIn';
 import LiveProjectButton from '../ui/LiveProjectButton';
 
-import { getStorageData } from '../../lib/data';
-
 interface ProjectCardProps {
   project: any;
   index: number;
@@ -63,9 +61,11 @@ const ProjectCard = ({ project, index, progress, range, targetScale }: ProjectCa
 };
 
 
-export default function ProjectsSection() {
+export default function ProjectsSection({ projects }: { projects: any[] }) {
   const container = useRef(null);
-  const { projects } = getStorageData();
+  
+  if (!projects) return null;
+
   const { scrollYProgress } = useScroll({
     target: container,
     offset: ['start start', 'end end']

@@ -1,8 +1,7 @@
 import ContactButton from '../ui/ContactButton';
-import { getStorageData } from '../../lib/data';
 
-export default function Footer() {
-  const { contact, hero } = getStorageData();
+export default function Footer({ contact }: { contact: any }) {
+  if (!contact) return null;
 
   return (
     <footer className="bg-[#0C0C0C] border-t border-[#D7E2EA]/10 px-6 md:px-10 py-16 sm:py-20">
@@ -10,7 +9,7 @@ export default function Footer() {
         {/* Left Side */}
         <div className="flex flex-col">
           <h2 className="hero-heading text-4xl sm:text-5xl font-black uppercase">
-            {hero.name} Hossien
+            Farhan Hossien
           </h2>
           <span className="text-[#D7E2EA] opacity-50 font-light uppercase tracking-widest text-[0.8rem] mt-2">
             AI Automation · Web Builder · Researcher

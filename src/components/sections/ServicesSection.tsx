@@ -1,8 +1,7 @@
 import FadeIn from '../ui/FadeIn';
-import { getStorageData } from '../../lib/data';
 
-export default function ServicesSection() {
-  const { services } = getStorageData();
+export default function ServicesSection({ services }: { services: any[] }) {
+  if (!services) return null;
 
   return (
     <section id="services" className="bg-[#FFFFFF] rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] px-5 sm:px-8 md:px-10 py-20 sm:py-24 md:py-32">

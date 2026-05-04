@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react';
+
 export const DEFAULT_DATA = {
   hero: {
     name: "Farhan",
@@ -81,4 +83,24 @@ export const getStorageData = () => {
   const contact = JSON.parse(localStorage.getItem("portfolio_contact") || JSON.stringify(DEFAULT_DATA.contact));
 
   return { hero, about, services, projects, contact };
+};
+
+export const usePortfolioData = () => {
+  const [data, setData] = useState(getStorageData());
+
+  useEffect(() => {
+    const handleStorage = () => {
+      setData(getStorageData());
+    };
+
+    window.addEventListener('storage', handleStorage);
+    window.addEventListener('portfolio-update', handleStorage);
+    
+    return () => {
+      window.removeEventListener('storage', handleStorage);
+      window.removeEventListener('portfolio-update', handleStorage);
+    };
+  }, []);
+
+  return data;
 };
